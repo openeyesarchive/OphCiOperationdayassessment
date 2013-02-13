@@ -17,14 +17,11 @@
  */
 
 /**
- * This is the model class for table "et_ophcioperationdayassessment_anaesthetic".
+ * This is the model class for table "ophcioperationdayassessment_anaesthetic_anaesthetic".
  *
  * The followings are the available columns in table:
  * @property string $id
- * @property integer $event_id
- * @property integer $anaesthetic_given_by_nurse
- * @property integer $nurse_id
- * @property integer $anaesthetic_id
+ * @property string $name
  *
  * The followings are the available model relations:
  *
@@ -33,14 +30,10 @@
  * @property Event $event
  * @property User $user
  * @property User $usermodified
- * @property User $nurse
- * @property EtOphcinursingtheatrerecordAnaestheticAnaesthetic $anaesthetic
  */
 
-class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeElement
+class EtOphcioperationdayassessmentAnaestheticAnaesthetic extends BaseActiveRecord
 {
-	public $service;
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return the static model class
@@ -55,7 +48,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 	 */
 	public function tableName()
 	{
-		return 'et_ophcioperationdayassessment_anaesthetic';
+		return 'ophcioperationdayassessment_anaesthetic_anaesthetic';
 	}
 
 	/**
@@ -66,11 +59,11 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, anaesthetic_given_by_nurse, nurse_id, anaesthetic_id, ', 'safe'),
-			array('nurse_id, anaesthetic_id, ', 'required'),
+			array('name', 'safe'),
+			array('name', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, anaesthetic_given_by_nurse, nurse_id, anaesthetic_id, ', 'safe', 'on' => 'search'),
+			array('id, name', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -87,8 +80,6 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-			'nurse' => array(self::BELONGS_TO, 'User', 'nurse_id'),
-			'anaesthetic' => array(self::BELONGS_TO, 'EtOphcioperationdayassessmentAnaestheticAnaesthetic', 'anaesthetic_id'),
 		);
 	}
 
@@ -99,10 +90,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 	{
 		return array(
 			'id' => 'ID',
-			'event_id' => 'Event',
-'anaesthetic_given_by_nurse' => 'Anaesthetic given by nurse',
-'nurse_id' => 'Nurse',
-'anaesthetic_id' => 'Anaesthetic',
+			'name' => 'Name',
 		);
 	}
 
@@ -118,12 +106,8 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
-		$criteria->compare('event_id', $this->event_id, true);
+		$criteria->compare('name', $this->name, true);
 
-$criteria->compare('anaesthetic_given_by_nurse', $this->anaesthetic_given_by_nurse);
-$criteria->compare('nurse_id', $this->nurse_id);
-$criteria->compare('anaesthetic_id', $this->anaesthetic_id);
-		
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
 			));
@@ -136,8 +120,6 @@ $criteria->compare('anaesthetic_id', $this->anaesthetic_id);
 	{
 	}
 
-
-
 	protected function beforeSave()
 	{
 		return parent::beforeSave();
@@ -145,7 +127,6 @@ $criteria->compare('anaesthetic_id', $this->anaesthetic_id);
 
 	protected function afterSave()
 	{
-
 		return parent::afterSave();
 	}
 
