@@ -16,7 +16,7 @@ class m120607_100401_event_type_OphCiOperationdayassessment extends CDbMigration
 		// --- ELEMENT TYPE ENTRIES ---
 
 				// create an element_type entry for this element type name if one doesn't already exist
-		if (!$this->dbConnection->createCommand()->select('id')->from('element_type')->where('name=:name', array(':name'=>'Day of operation'))->queryRow()) {
+		if (!$this->dbConnection->createCommand()->select('id')->from('element_type')->where('event_type_id=:event_type_id and name=:name', array(':event_type_id'=>$event_type['id'],':name'=>'Day of operation'))->queryRow()) {
 			$this->insert('element_type', array('name' => 'Day of operation','class_name' => 'OEElementDayOfOperation', 'event_type_id' => $event_type['id'], 'display_order' => 1));
 		}
 		// select the element_type_id for this element type name
