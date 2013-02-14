@@ -67,7 +67,6 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 		// will receive user inputs.
 		return array(
 			array('event_id, anaesthetic_given_by_nurse, nurse_id, anaesthetic_id, ', 'safe'),
-			array('nurse_id, anaesthetic_id, ', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
 			array('id, event_id, anaesthetic_given_by_nurse, nurse_id, anaesthetic_id, ', 'safe', 'on' => 'search'),
@@ -119,38 +118,36 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
-
-$criteria->compare('anaesthetic_given_by_nurse', $this->anaesthetic_given_by_nurse);
-$criteria->compare('nurse_id', $this->nurse_id);
-$criteria->compare('anaesthetic_id', $this->anaesthetic_id);
+		$criteria->compare('anaesthetic_given_by_nurse', $this->anaesthetic_given_by_nurse);
+		$criteria->compare('nurse_id', $this->nurse_id);
+		$criteria->compare('anaesthetic_id', $this->anaesthetic_id);
 		
 		return new CActiveDataProvider(get_class($this), array(
-				'criteria' => $criteria,
-			));
+			'criteria' => $criteria,
+		));
 	}
 
-	/**
-	 * Set default values for forms on create
-	 */
-	public function setDefaultOptions()
-	{
+	public function getHidden() {
+		if (empty($_POST)) {
+			if ($this->id) {
+				return (!$this->anaesthetic_given_by_nurse);
+			}
+			return true;
+		}
+
+		return !@$_POST['Element_OphCiOperationdayassessment_Anaesthetic']['anaesthetic_given_by_nurse'];
 	}
 
+	protected function beforeValidate() {
+		if ($this->anaesthetic_given_by_nurse) {
+			if (!$this->nurse_id) {
+				$this->addError('nurse_id','Please specify the nurse who gave the anaesthetic');
+			}
+			if (!$this->anaesthetic_id) {
+				$this->addError('anaesthetic_id','Please specify the anaesthetic used');
+			}
+		}
 
-
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
 		return parent::beforeValidate();
 	}
 }

@@ -23,6 +23,6 @@
 	data-element-display-order="<?php echo $element->elementType->display_order ?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
 	<?php echo $form->checkBox($element, 'anaesthetic_given_by_nurse', array('text-align' => 'right'))?>
-	<?php echo $form->dropDownList($element, 'nurse_id', CHtml::listData(User::model()->findAll(array('order'=> 'first_name asc')),'id','fullName'),array('empty'=>'- Please select -'))?>
-	<?php echo $form->dropDownList($element, 'anaesthetic_id', CHtml::listData(EtOphcioperationdayassessmentAnaestheticAnaesthetic::model()->findAll(array('order'=> 'display_order asc')),'id','name'),array('empty'=>'- Please select -'))?>
+	<?php echo $form->dropDownList($element, 'nurse_id', CHtml::listData(User::model()->findAll(array('order'=> 'first_name asc')),'id','fullName'),array('empty'=>'- Please select -'),$element->hidden)?>
+	<?php echo $form->dropDownList($element, 'anaesthetic_id', CHtml::listData(EtOphcioperationdayassessmentAnaestheticAnaesthetic::model()->findAll(array('order'=> 'display_order asc')),'id','name'),array('empty'=>'- Please select -'),$element->hidden)?>
 </div>
