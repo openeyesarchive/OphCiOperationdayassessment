@@ -17,7 +17,7 @@
  */
 
 /**
- * This is the model class for table "ophcioperationdayassessment_anaesthetic_anaesthetic".
+ * This is the model class for table "ophcioperationdayassessment_anaesthetic".
  *
  * The followings are the available columns in table:
  * @property string $id
@@ -32,7 +32,7 @@
  * @property User $usermodified
  */
 
-class EtOphcioperationdayassessmentAnaestheticAnaesthetic extends BaseActiveRecord
+class OphCiOperationdayassessment_Anaesthetic extends BaseActiveRecord
 {
 	/**
 	 * Returns the static model of the specified AR class.
@@ -48,7 +48,7 @@ class EtOphcioperationdayassessmentAnaestheticAnaesthetic extends BaseActiveReco
 	 */
 	public function tableName()
 	{
-		return 'ophcioperationdayassessment_anaesthetic_anaesthetic';
+		return 'ophcioperationdayassessment_anaesthetic';
 	}
 
 	/**
@@ -111,28 +111,6 @@ class EtOphcioperationdayassessmentAnaestheticAnaesthetic extends BaseActiveReco
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
 			));
-	}
-
-	/**
-	 * Set default values for forms on create
-	 */
-	public function setDefaultOptions()
-	{
-	}
-
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
 	}
 }
 ?>

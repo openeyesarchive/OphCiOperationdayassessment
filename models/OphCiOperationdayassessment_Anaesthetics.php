@@ -17,14 +17,11 @@
  */
 
 /**
- * This is the model class for table "et_ophcioperationdayassessment_anaesthetic".
+ * This is the model class for table "ophcioperationdayassessment_anaesthetics".
  *
  * The followings are the available columns in table:
  * @property string $id
- * @property integer $event_id
- * @property integer $anaesthetic_given_by_nurse
- * @property integer $nurse_id
- * @property integer $anaesthetic_id
+ * @property string $name
  *
  * The followings are the available model relations:
  *
@@ -33,14 +30,10 @@
  * @property Event $event
  * @property User $user
  * @property User $usermodified
- * @property User $nurse
- * @property EtOphcinursingtheatrerecordAnaestheticAnaesthetic $anaesthetic
  */
 
-class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeElement
+class OphCiOperationdayassessment_Anaesthetics extends BaseActiveRecord
 {
-	public $service;
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return the static model class
@@ -55,7 +48,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 	 */
 	public function tableName()
 	{
-		return 'et_ophcioperationdayassessment_anaesthetic';
+		return 'ophcioperationdayassessment_anaesthetics';
 	}
 
 	/**
@@ -66,10 +59,11 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, anaesthetic_given_by_nurse, nurse_id, anaesthetic_id, nurse_witnessed_anaesthetic', 'safe'),
+			array('element_id, anaesthetic_id', 'safe'),
+			array('element_id, anaesthetic_id', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, anaesthetic_given_by_nurse, nurse_id, anaesthetic_id, ', 'safe', 'on' => 'search'),
+			array('element_id, anaesthetic_id', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -86,8 +80,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-			'nurse' => array(self::BELONGS_TO, 'User', 'nurse_id'),
-			'anaesthetic_agents' => array(self::HAS_MANY, 'OphCiOperationdayassessment_Anaesthetics', 'element_id'),
+			'anaesthetic' => array(self::BELONGS_TO, 'OphCiOperationdayassessment_Anaesthetic', 'anaesthetic_id'),
 		);
 	}
 
@@ -98,12 +91,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 	{
 		return array(
 			'id' => 'ID',
-			'event_id' => 'Event',
-			'anaesthetic_given_by_nurse' => 'Anaesthetic given by nurse',
-			'nurse_id' => 'Nurse',
-			'anaesthetic_id' => 'Anaesthetic',
-			'nurse_witnessed_anaesthetic' => 'Nurse checked and witnessed the anaesthetic',
-			'anaesthetic_agents' => 'Anaesthetic agents',
+			'name' => 'Name',
 		);
 	}
 
@@ -119,71 +107,11 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
-		$criteria->compare('event_id', $this->event_id, true);
-		$criteria->compare('anaesthetic_given_by_nurse', $this->anaesthetic_given_by_nurse);
-		$criteria->compare('nurse_id', $this->nurse_id);
-		$criteria->compare('anaesthetic_id', $this->anaesthetic_id);
-		
+		$criteria->compare('name', $this->name, true);
+
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria' => $criteria,
 		));
-	}
-
-	public function getHidden() {
-		if (empty($_POST)) {
-			if ($this->id) {
-				return (!$this->anaesthetic_given_by_nurse);
-			}
-			return true;
-		}
-
-		return !@$_POST['Element_OphCiOperationdayassessment_Anaesthetic']['anaesthetic_given_by_nurse'];
-	}
-
-	protected function beforeValidate() {
-		if ($this->anaesthetic_given_by_nurse) {
-			if (!$this->nurse_id) {
-				$this->addError('nurse_id','Please specify the nurse who gave the anaesthetic');
-			}
-			if (empty($_POST['AnaestheticAgent'])) {
-				$this->addError('anaesthetic_agents','Please specify at least one anaesthetic agent');
-			}
-		}
-
-		return parent::beforeValidate();
-	}
-
-	protected function afterSave() {
-		$existing_anaesthetic_ids = array();
-
-		foreach ($this->anaesthetic_agents as $anaesthetic_agent) {
-			$existing_anaesthetic_ids[] = $anaesthetic_agent->anaesthetic_id;
-		}
-
-		if (isset($_POST['AnaestheticAgent'])) {
-			foreach ($_POST['AnaestheticAgent'] as $id) {
-				if (!in_array($id,$existing_anaesthetic_ids)) {
-					$anaesthetic_agent = new OphCiOperationdayassessment_Anaesthetics;
-					$anaesthetic_agent->element_id = $this->id;
-					$anaesthetic_agent->anaesthetic_id = $id;
-
-					if (!$anaesthetic_agent->save()) {
-						throw new Exception("Unable to save anaesthetic agent: ".print_r($anaesthetic_agent->getErrors(),true));
-					}
-				}
-			}
-		}
-
-		foreach ($existing_anaesthetic_ids as $id) {
-			if (!isset($_POST['AnaestheticAgent']) || !in_array($id,$_POST['AnaestheticAgent'])) {
-				$anaesthetic_agent = OphCiOperationdayassessment_Anaesthetics::model()->find('element_id=? and anaesthetic_id=?',array($this->id,$id));
-				if (!$anaesthetic_agent->delete()) {
-					throw new Exception("Unable to delete anaesthetic agent: ".print_r($anaesthetic_agent->getErrors(),true));
-				}
-			}
-		}
-
-		return parent::afterSave();
 	}
 }
 ?>

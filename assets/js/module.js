@@ -47,10 +47,12 @@ $(document).ready(function() {
 	$('input[type="checkbox"][name="Element_OphCiOperationdayassessment_Anaesthetic[anaesthetic_given_by_nurse]"]').click(function() {
 		if ($(this).is(':checked')) {
 			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_nurse_id').show();
-			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_anaesthetic_id').show();
+			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_Agents').show();
+			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_nurse_witnessed_anaesthetic').show();
 		} else {
 			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_nurse_id').hide();
-			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_anaesthetic_id').hide();
+			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_Agents').hide();
+			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_nurse_witnessed_anaesthetic').hide();
 		}
 	});
 });
