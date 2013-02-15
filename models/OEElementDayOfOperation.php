@@ -57,11 +57,11 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, medical_history, inr_level, preop_checklist_completed, cjd_checklist_completed, ', 'safe'),
-			array('inr_level, ', 'required'),
+			array('event_id, medical_history, inr_level, preop_checklist_completed, cjd_checklist_completed, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided', 'safe'),
+			array('medical_history, inr_level, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided, preop_checklist_completed, cjd_checklist_completed', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, medical_history, inr_level, preop_checklist_completed, cjd_checklist_completed, ', 'safe', 'on' => 'search'),
+			array('id, event_id, medical_history, inr_level, preop_checklist_completed, cjd_checklist_completed, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -89,10 +89,14 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-'medical_history' => 'Medical history',
-'inr_level' => 'INR level',
-'preop_checklist_completed' => 'Preoperative checklist completed and filed in the notes',
-'cjd_checklist_completed' => 'CJD checklist completed and filed in the notes',
+			'medical_history' => 'Medical history',
+			'inr_level' => 'INR level',
+			'preop_checklist_completed' => 'Preoperative checklist completed and filed in the notes',
+			'cjd_checklist_completed' => 'CJD checklist completed and filed in the notes',
+			'ready_to_go_home' => 'Ready to go home',
+			'district_nurse_contacted' => 'District nurse contacted',
+			'able_to_instil_drops' => 'Able to instil drops',
+			'leaflet_provided' => 'Informational leaflet and contact numbers provided',
 		);
 	}
 
