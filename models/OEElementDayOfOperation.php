@@ -89,7 +89,7 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-			'medical_history' => 'Medical history',
+			'medical_history' => 'Change of medical history since pre-operative assessment',
 			'inr_level' => 'INR level',
 			'preop_checklist_completed' => 'Preoperative checklist completed and filed in the notes',
 			'cjd_checklist_completed' => 'CJD checklist completed and filed in the notes',
