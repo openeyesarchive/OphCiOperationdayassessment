@@ -22,10 +22,6 @@
 	data-element-type-name="<?php echo $element->elementType->name ?>"
 	data-element-display-order="<?php echo $element->elementType->display_order ?>">
 	<h4 class="elementTypeName"><?php  echo $element->elementType->name; ?></h4>
-	<?php echo $form->radioBoolean($element, 'medical_history'); ?>
-	<?php echo $form->textField($element, 'inr_level', array('size' => '10')); ?>
-	<?php echo $form->radioBoolean($element, 'preop_checklist_completed'); ?>
-	<?php echo $form->radioBoolean($element, 'cjd_checklist_completed'); ?>
 	<?php echo $form->radioBoolean($element, 'ready_to_go_home'); ?>
 	<?php echo $form->radioBoolean($element, 'district_nurse_contacted'); ?>
 	<?php echo $form->radioBoolean($element, 'able_to_instil_drops'); ?>

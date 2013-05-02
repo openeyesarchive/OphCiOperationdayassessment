@@ -57,7 +57,7 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, medical_history, inr_level, preop_checklist_completed, cjd_checklist_completed, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided', 'safe'),
+			array('event_id, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided', 'safe'),
 			array('medical_history, inr_level, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided, preop_checklist_completed, cjd_checklist_completed', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
