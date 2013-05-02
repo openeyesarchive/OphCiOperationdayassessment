@@ -25,5 +25,6 @@
 	<?php echo $form->radioBoolean($element, 'ready_to_go_home'); ?>
 	<?php echo $form->radioBoolean($element, 'district_nurse_contacted'); ?>
 	<?php echo $form->radioBoolean($element, 'able_to_instil_drops'); ?>
+	<?php echo $form->dropDownList($element, 'discharged_home_on_id', CHtml::listData(OphCiOperationdayassessment_Discharged_Home_On::model()->findAll(array('order'=>'display_order')),'id','name'),array('empty'=>'- Select -'))?>
 	<?php echo $form->radioBoolean($element, 'leaflet_provided'); ?>
 </div>

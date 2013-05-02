@@ -17,21 +17,23 @@
  */
 
 /**
- * This is the model class for table "et_ophcioperationdayassessment_dayofoperation".
+ * This is the model class for table "ophcioperationdayassessment_discharged_home_on".
  *
  * The followings are the available columns in table:
  * @property string $id
- * @property integer $event_id
- * @property string $medical_history
- * @property string $inr_level
+ * @property string $name
  *
  * The followings are the available model relations:
+ *
+ * @property ElementType $element_type
+ * @property EventType $eventType
+ * @property Event $event
+ * @property User $user
+ * @property User $usermodified
  */
 
-class OEElementDayOfOperation extends BaseEventTypeElement
+class OphCiOperationdayassessment_Discharged_Home_On extends BaseActiveRecord
 {
-	public $service;
-
 	/**
 	 * Returns the static model of the specified AR class.
 	 * @return the static model class
@@ -46,7 +48,7 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 	 */
 	public function tableName()
 	{
-		return 'et_ophcioperationdayassessment_dayofoperation';
+		return 'ophcioperationdayassessment_dayofoperation_discharged_home_on';
 	}
 
 	/**
@@ -57,11 +59,11 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		// NOTE: you should only define rules for those attributes that
 		// will receive user inputs.
 		return array(
-			array('event_id, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided, discharged_home_on_id', 'safe'),
-			array('medical_history, inr_level, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided, preop_checklist_completed, cjd_checklist_completed', 'required'),
+			array('name', 'safe'),
+			array('name', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, medical_history, inr_level, preop_checklist_completed, cjd_checklist_completed, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided', 'safe', 'on' => 'search'),
+			array('id, name', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -78,7 +80,6 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 			'event' => array(self::BELONGS_TO, 'Event', 'event_id'),
 			'user' => array(self::BELONGS_TO, 'User', 'created_user_id'),
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
-			'discharged_home_on' => array(self::BELONGS_TO, 'OphCiOperationdayassessment_Discharged_Home_On', 'discharged_home_on_id'),
 		);
 	}
 
@@ -89,16 +90,7 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 	{
 		return array(
 			'id' => 'ID',
-			'event_id' => 'Event',
-			'medical_history' => 'Change of medical history since pre-operative assessment',
-			'inr_level' => 'INR level',
-			'preop_checklist_completed' => 'Preoperative checklist completed and filed in the notes',
-			'cjd_checklist_completed' => 'CJD checklist completed and filed in the notes',
-			'ready_to_go_home' => 'Ready to go home',
-			'district_nurse_contacted' => 'District nurse contacted',
-			'able_to_instil_drops' => 'Able to instil drops',
-			'leaflet_provided' => 'Informational leaflet and contact numbers provided',
-			'discharged_home_on_id' => 'Discharged home on',
+			'name' => 'Name',
 		);
 	}
 
@@ -114,38 +106,11 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		$criteria = new CDbCriteria;
 
 		$criteria->compare('id', $this->id, true);
-		$criteria->compare('event_id', $this->event_id, true);
+		$criteria->compare('name', $this->name, true);
 
-$criteria->compare('medical_history', $this->medical_history);
-$criteria->compare('inr_level', $this->inr_level);
-$criteria->compare('preop_checklist_completed', $this->preop_checklist_completed);
-$criteria->compare('cjd_checklist_completed', $this->cjd_checklist_completed);
-		
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
 			));
-	}
-
-	/**
-	 * Set default values for forms on create
-	 */
-	public function setDefaultOptions()
-	{
-	}
-
-	protected function beforeSave()
-	{
-		return parent::beforeSave();
-	}
-
-	protected function afterSave()
-	{
-		return parent::afterSave();
-	}
-
-	protected function beforeValidate()
-	{
-		return parent::beforeValidate();
 	}
 }
 ?>
