@@ -58,10 +58,10 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		// will receive user inputs.
 		return array(
 			array('event_id, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided, discharged_home_on_id', 'safe'),
-			array('medical_history, inr_level, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided, preop_checklist_completed, cjd_checklist_completed', 'required'),
+			array('ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided,', 'required'),
 			// The following rule is used by search().
 			// Please remove those attributes that should not be searched.
-			array('id, event_id, medical_history, inr_level, preop_checklist_completed, cjd_checklist_completed, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided', 'safe', 'on' => 'search'),
+			array('id, event_id, ready_to_go_home, district_nurse_contacted, able_to_instil_drops, leaflet_provided', 'safe', 'on' => 'search'),
 		);
 	}
 	
@@ -90,10 +90,6 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		return array(
 			'id' => 'ID',
 			'event_id' => 'Event',
-			'medical_history' => 'Change of medical history since pre-operative assessment',
-			'inr_level' => 'INR level',
-			'preop_checklist_completed' => 'Preoperative checklist completed and filed in the notes',
-			'cjd_checklist_completed' => 'CJD checklist completed and filed in the notes',
 			'ready_to_go_home' => 'Ready to go home',
 			'district_nurse_contacted' => 'District nurse contacted',
 			'able_to_instil_drops' => 'Able to instil drops',
@@ -116,11 +112,6 @@ class OEElementDayOfOperation extends BaseEventTypeElement
 		$criteria->compare('id', $this->id, true);
 		$criteria->compare('event_id', $this->event_id, true);
 
-$criteria->compare('medical_history', $this->medical_history);
-$criteria->compare('inr_level', $this->inr_level);
-$criteria->compare('preop_checklist_completed', $this->preop_checklist_completed);
-$criteria->compare('cjd_checklist_completed', $this->cjd_checklist_completed);
-		
 		return new CActiveDataProvider(get_class($this), array(
 				'criteria' => $criteria,
 			));
