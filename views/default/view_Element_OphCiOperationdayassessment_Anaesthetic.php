@@ -26,6 +26,10 @@
 				<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('nurse_witnessed_anaesthetic'))?></td>
 				<td><span class="big"><?php echo $element->nurse_witnessed_anaesthetic ? 'Yes' : 'No'?></span></td>
 			</tr>
+            <tr>
+                <td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('completed_cataract_nurse_id'))?></td>
+                <td><span class="big"><?php echo $element->completed_cataract_nurse ? $element->completed_cataract_nurse->name : 'None'?></span></td>
+            </tr>
 		<?php }?>
 	</tbody>
 </table>

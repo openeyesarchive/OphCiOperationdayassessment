@@ -88,7 +88,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
 			'nurse' => array(self::BELONGS_TO, 'User', 'nurse_id'),
 			'anaesthetic_agents' => array(self::HAS_MANY, 'OphCiOperationdayassessment_Anaesthetics', 'element_id'),
-            'completed_cataract_nurse_id' => array(self::BELONGS_TO, 'ophcioperationdayassessment_cataract_nurses', 'id'),
+            'completed_cataract_nurse' => array(self::BELONGS_TO, 'ophcioperationdayassessment_cataract_nurses', 'completed_cataract_nurse_id'),
 		);
 	}
 
