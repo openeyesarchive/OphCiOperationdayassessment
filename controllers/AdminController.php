@@ -89,7 +89,7 @@ class AdminController extends ModuleAdminController
             $this->redirect('viewcataractnurses/');
         }
 
-        $this->render('/admin/editcateractnurse',array(
+        $this->render('/admin/editcataractnurse',array(
             'nurse' => $nurse,
             'errors' => $errors,
         ));
