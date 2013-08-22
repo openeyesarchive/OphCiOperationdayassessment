@@ -2,8 +2,4 @@
 #event_content .eventDetail > .label { width: 425px !important; }
 
 #admin_cataract_nurses ul li { padding: 0; margin: 0; line-height: 15px; font-size: 11px; }
-#admin_cataract_nurses ul li .column_id { width: 30px; display: inline-block; }
-#admin_cataract_nurses ul li .column_code { width: 44px; display: inline-block; }
-#admin_cataract_nurses ul li .column_name { width: 200px; display: inline-block; }
-#admin_cataract_nurses ul li .column_type { width: 170px; display: inline-block; }
-#admin_cataract_nurses ul li .column_address { width: 326px; display: inline-block; }
+#admin_cataract_nurses ul li .column_name { width: 425px; display: inline-block; }
