@@ -18,10 +18,10 @@
  */
 
 return array(
-    'params' => array(
-        'admin_menu' => array(
-            'View One-Stop Cataract Nurses' => '/OphCiOperationdayassessment/admin/viewcataractnurses/',
-        ),
-    ),
+	'params' => array(
+		'admin_menu' => array(
+			'View One-Stop Cataract Nurses' => '/OphCiOperationdayassessment/admin/viewcataractnurses/',
+		),
+	),
 );
 

@@ -88,7 +88,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 			'usermodified' => array(self::BELONGS_TO, 'User', 'last_modified_user_id'),
 			'nurse' => array(self::BELONGS_TO, 'User', 'nurse_id'),
 			'anaesthetic_agents' => array(self::HAS_MANY, 'OphCiOperationdayassessment_Anaesthetics', 'element_id'),
-            'completed_cataract_nurse' => array(self::BELONGS_TO, 'ophcioperationdayassessment_cataract_nurses', 'completed_cataract_nurse_id'),
+			'completed_cataract_nurse' => array(self::BELONGS_TO, 'ophcioperationdayassessment_cataract_nurses', 'completed_cataract_nurse_id'),
 		);
 	}
 
@@ -105,7 +105,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 			'anaesthetic_id' => 'Anaesthetic',
 			'nurse_witnessed_anaesthetic' => 'Nurse checked and witnessed the anaesthetic',
 			'anaesthetic_agents' => 'Anaesthetic agents',
-            'completed_cataract_nurse_id' => 'Completed by',
+			'completed_cataract_nurse_id' => 'Completed by',
 		);
 	}
 
@@ -125,7 +125,7 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 		$criteria->compare('anaesthetic_given_by_nurse', $this->anaesthetic_given_by_nurse);
 		$criteria->compare('nurse_id', $this->nurse_id);
 		$criteria->compare('anaesthetic_id', $this->anaesthetic_id);
-        $criteria->compare('completed_cataract_nurse_id', $this->anaesthetic_id);
+		$criteria->compare('completed_cataract_nurse_id', $this->anaesthetic_id);
 		
 		return new CActiveDataProvider(get_class($this), array(
 			'criteria' => $criteria,
@@ -145,9 +145,9 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 
 	protected function beforeValidate() {
 		if ($this->anaesthetic_given_by_nurse) {
-            if (!$this->nurse_id) {
-                $this->addError('completed_cataract_nurse_id','Please specify the One-stop Cataract nurse');
-            }
+			if (!$this->nurse_id) {
+				$this->addError('completed_cataract_nurse_id','Please specify the One-stop Cataract nurse');
+			}
 			if (!$this->nurse_id) {
 				$this->addError('nurse_id','Please specify the nurse who gave the anaesthetic');
 			}

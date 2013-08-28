@@ -29,12 +29,12 @@ $(document).ready(function() {
 			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_nurse_id').show();
 			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_Agents').show();
 			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_nurse_witnessed_anaesthetic').show();
-            $('#div_Element_OphCiOperationdayassessment_Anaesthetic_completed_cataract_nurse_id').show();
+			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_completed_cataract_nurse_id').show();
 		} else {
 			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_nurse_id').hide();
 			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_Agents').hide();
 			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_nurse_witnessed_anaesthetic').hide();
-            $('#div_Element_OphCiOperationdayassessment_Anaesthetic_completed_cataract_nurse_id').hide();
+			$('#div_Element_OphCiOperationdayassessment_Anaesthetic_completed_cataract_nurse_id').hide();
 		}
 	});
 });

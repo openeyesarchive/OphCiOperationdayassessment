@@ -25,6 +25,6 @@
 	<?php echo $form->checkBox($element, 'anaesthetic_given_by_nurse', array('text-align' => 'right'))?>
 	<?php echo $form->dropDownList($element, 'nurse_id', CHtml::listData(User::model()->findAll(array('order'=> 'first_name asc')),'id','fullName'),array('empty'=>'- Please select -'),$element->hidden)?>
 	<?php echo $form->multiSelectList($element, 'AnaestheticAgent', 'anaesthetic_agents', 'anaesthetic_id', CHtml::listData(OphCiOperationdayassessment_Anaesthetic::model()->findAll(array('order'=>'display_order')),'id','name'), null, array('empty' => '- Anaesthetic agents -', 'label' => 'Agents'), $element->hidden)?>
-    <?php echo $form->dropDownList($element, 'completed_cataract_nurse_id', CHtml::listData(OphCiOperationdayassessment_Cataract_Nurses::model()->findAll(array('order'=> 'name asc')),'id','name'),array('empty'=>'- Please select -'),$element->hidden)?>
+	<?php echo $form->dropDownList($element, 'completed_cataract_nurse_id', CHtml::listData(OphCiOperationdayassessment_Cataract_Nurses::model()->findAll(array('order'=> 'name asc')),'id','name'),array('empty'=>'- Please select -'),$element->hidden)?>
 	<?php echo $form->checkBox($element, 'nurse_witnessed_anaesthetic', array('text-align' => 'right'), array('hide' => $element->hidden))?>
 </div>
