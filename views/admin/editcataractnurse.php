@@ -18,11 +18,10 @@
  */
 
 ?>
-<div class="report curvybox white">
-	<div class="admin">
-		<h3 class="georgia"><?php echo $nurse->id ? 'Edit' : 'Add'?> Cataract Nurse</h3>
+<div class="box admin">
+		<h2><?php echo $nurse->id ? 'Edit' : 'Add'?> Cataract Nurse</h2>
 		<?php echo $this->renderPartial('_form_errors',array('errors'=>$errors))?>
-		<div>
+
 			<?php
 			$form = $this->beginWidget('BaseEventTypeCActiveForm', array(
 				'id'=>'adminform',
@@ -32,15 +31,15 @@
 			))?>
 		   <?php echo $form->textField($nurse,'name')?>
 		   <?php $this->endWidget()?>
-		</div>
-	</div>
+
 </div>
+
 <?php echo $this->renderPartial('_form_errors',array('errors'=>$errors))?>
-<div>
-	<?php echo EventAction::button('Save', 'save', array('colour' => 'green'))->toHtml()?>
-	<?php echo EventAction::button('Cancel', 'cancel', array('colour' => 'red'))->toHtml()?>
+
+	<?php echo EventAction::button('Save', 'save', null, array('class' => 'button small'))->toHtml()?>
+	<?php echo EventAction::button('Cancel', 'cancel', null, array('class' => 'button small'))->toHtml()?>
 	<img class="loader" src="<?php echo Yii::app()->createUrl('/img/ajax-loader.gif')?>" alt="loading..." style="display: none;" />
-</div>
+
 <script type="text/javascript">
 	handleButton($('#et_cancel'),function(e) {
 		e.preventDefault();

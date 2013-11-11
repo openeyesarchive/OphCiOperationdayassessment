@@ -17,33 +17,32 @@
  * @license http://www.gnu.org/licenses/gpl-3.0.html The GNU General Public License V3.0
  */
 ?>
-<div class="report curvybox white">
-	<div class="reportInputs">
-		<h3 class="georgia">Cataract Nurses</h3>
-		<div>
-			<form id="admin_cataract_nurses">
-				<ul class="grid reduceheight">
-					<li class="header">
-						<span class="column_checkbox"><input type="checkbox" id="checkall" class="cataract_nurse" /></span>
-						<span class="column_name">Name</span>
-					</li>
-					<div class="sortable">
-						<?php foreach (OphCiOperationdayassessment_Cataract_Nurses::model()->findAll(array('order'=>'name asc')) as $i => $nurse) {?>
-							<li class="<?php if ($i%2 == 0) {?>even<?php } else {?>odd<?php }?>" data-attr-id="<?php echo $nurse->id?>">
-								<span class="column_checkbox"><input type="checkbox" name="cataract_nurse[]" value="<?php echo $nurse->id?>" class="wards" /></span>
-								<span class="column_name"><?php echo $nurse->name?></span>
-							</li>
-						<?php }?>
-					</div>
-				</ul>
-			</form>
-		</div>
-	</div>
+<div class="box admin">
+	<h2>Cataract Nurses</h2>
+	<form id="admin_cataract_nurses">
+		<table class="grid">
+			<thead>
+			<tr>
+				<th><input type="checkbox" id="checkall" class="cataract_nurse" /></th>
+				<th>Name</th>
+			</tr>
+			</thead>
+			<tbody>
+			<?php foreach (OphCiOperationdayassessment_Cataract_Nurses::model()->findAll(array('order'=>'name asc')) as $i => $nurse) {?>
+
+				<td><input type="checkbox" name="cataract_nurse[]" value="<?php echo $nurse->id?>" class="wards" /></td>
+				<td><?php echo $nurse->name?></td>
+
+			<?php }?>
+			</td>
+			</tbody>
+		</table>
+	</form>
 </div>
-<div>
-	<?php echo EventAction::button('Add', 'addCataractNurse', array('colour' => 'blue'))->toHtml()?>
-	<?php echo EventAction::button('Delete', 'delete_Cataract_Nurse', array('colour' => 'blue'))->toHtml()?>
-</div>
+
+<?php echo EventAction::button('Add', 'addCataractNurse', null ,array('class' => 'button small'))->toHtml()?>&nbsp;
+<?php echo EventAction::button('Delete', 'delete_Cataract_Nurse', null, array('class' => 'button small'))->toHtml()?>
+
 <div id="confirm_delete_cataract_nurses" title="Confirm delete cataract_nurse" style="display: none;">
 	<div>
 		<div id="delete_confirm_delete_cataract_nurse">

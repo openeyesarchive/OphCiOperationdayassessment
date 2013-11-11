@@ -1,11 +1,7 @@
-<?php 	$this->breadcrumbs=array($this->module->id);
-	$this->header();
-?>
-<h3 class="withEventIcon" style="background:transparent url(<?php echo $this->assetPath?>/img/medium.png) center left no-repeat;"><?php  echo $this->event_type->name ?></h3>
+<?php $this->beginContent('//patient/event_container');
+$this->moduleNameCssClass.=" highlight-fields";?>
+<h2 class="event-title"><?php echo $this->event_type->name ?></h2>
 
-<div>
-	<?php  $this->renderDefaultElements($this->action->id); ?>	<?php  $this->renderOptionalElements($this->action->id); ?>
-	<div class="cleartall"></div>
-</div>
+<?php  $this->renderDefaultElements($this->action->id); ?>	<?php  $this->renderOptionalElements($this->action->id); ?>
 
-<?php  $this->footer();?>
+<?php $this->endContent() ;?>
