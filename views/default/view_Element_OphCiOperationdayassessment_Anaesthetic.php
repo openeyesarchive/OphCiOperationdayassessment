@@ -1,35 +1,52 @@
 
-<h4 class="elementTypeName"><?php  echo $element->elementType->name ?></h4>
-
-<table class="subtleWhite normalText">
-	<tbody>
-		<tr>
-			<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('anaesthetic_given_by_nurse'))?></td>
-			<td><span class="big"><?php echo $element->anaesthetic_given_by_nurse ? 'Yes' : 'No'?></span></td>
-		</tr>
+<section class="element">
+	<h3 class="element-title highlight"><?php echo $element->elementType->name ?></h3>
+	<div class="element-data">
+		<div class="data-row row">
+			<div class="large-4 column">
+				<div class="data-label"><?php echo CHtml::encode($element->getAttributeLabel('anaesthetic_given_by_nurse'))?></div>
+			</div>
+			<div class="large-8 column">
+				<div class="data-value"><?php echo $element->anaesthetic_given_by_nurse ? 'Yes' : 'No'?></div>
+			</div>
+		</div>
 		<?php if ($element->anaesthetic_given_by_nurse) {?>
-			<tr>
-				<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('nurse_id'))?></td>
-				<td><span class="big"><?php echo $element->nurse ? $element->nurse->first_name : 'None'?></span></td>
-			</tr>
-			<tr>
-				<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('anaesthetic_agents'))?></td>
-				<td>
-					<span class="big">
+			<div class="data-row row">
+				<div class="large-4 column">
+					<div class="data-label"><?php echo CHtml::encode($element->getAttributeLabel('nurse_id'))?></div>
+				</div>
+				<div class="large-8 column">
+					<div class="data-value"><?php echo $element->nurse ? $element->nurse->first_name : 'None'?></div>
+				</div>
+			</div>
+			<div class="data-row row">
+				<div class="large-4 column">
+					<div class="data-label"><?php echo CHtml::encode($element->getAttributeLabel('anaesthetic_agents'))?></div>
+				</div>
+				<div class="large-8 column">
+					<div class="data-value">
 						<?php foreach ($element->anaesthetic_agents as $agent) {
 							echo $agent->anaesthetic->name?><br/>
 						<?php }?>
-					</span>
-				</td>
-			</tr>
-			<tr>
-				<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('nurse_witnessed_anaesthetic'))?></td>
-				<td><span class="big"><?php echo $element->nurse_witnessed_anaesthetic ? 'Yes' : 'No'?></span></td>
-			</tr>
-			<tr>
-				<td width="30%"><?php echo CHtml::encode($element->getAttributeLabel('completed_cataract_nurse_id'))?></td>
-				<td><span class="big"><?php echo $element->completed_cataract_nurse ? $element->completed_cataract_nurse->name : 'None'?></span></td>
-			</tr>
+					</div>
+				</div>
+			</div>
+			<div class="data-row row">
+				<div class="large-4 column">
+					<div class="data-label"><?php echo CHtml::encode($element->getAttributeLabel('nurse_witnessed_anaesthetic'))?></div>
+				</div>
+				<div class="large-8 column">
+					<div class="data-value"><?php echo $element->nurse_witnessed_anaesthetic ? 'Yes' : 'No'?></div>
+				</div>
+			</div>
+			<div class="data-row row">
+				<div class="large-4 column">
+					<div class="data-label"><?php echo CHtml::encode($element->getAttributeLabel('completed_cataract_nurse_id'))?></div>
+				</div>
+				<div class="large-8 column">
+					<div class="data-value"><?php echo $element->completed_cataract_nurse ? $element->completed_cataract_nurse->name : 'None'?></div>
+				</div>
+			</div>
 		<?php }?>
-	</tbody>
-</table>
+	</div>
+</section>
