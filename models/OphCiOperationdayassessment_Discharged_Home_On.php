@@ -17,7 +17,7 @@
  */
 
 /**
- * This is the model class for table "ophcioperationdayassessment_discharged_home_on".
+ * This is the model class for table "ophcioperationdayassessment_home_on".
  *
  * The followings are the available columns in table:
  * @property string $id
@@ -48,7 +48,7 @@ class OphCiOperationdayassessment_Discharged_Home_On extends BaseActiveRecord
 	 */
 	public function tableName()
 	{
-		return 'ophcioperationdayassessment_dayofoperation_discharged_home_on';
+		return 'ophcioperationdayassessment_dayofoperation_home_on';
 	}
 
 	/**
