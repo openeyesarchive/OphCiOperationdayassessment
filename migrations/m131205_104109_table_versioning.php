@@ -185,16 +185,11 @@ CREATE TABLE `ophcioperationdayassessment_dayofoperation_home_on_version` (
 	public function down()
 	{
 		$this->dropColumn('ophcioperationdayassessment_anaesthetic','deleted');
-		$this->dropColumn('ophcioperationdayassessment_anaesthetic_version','deleted');
 		$this->dropColumn('ophcioperationdayassessment_anaesthetics','deleted');
-		$this->dropColumn('ophcioperationdayassessment_anaesthetics_version','deleted');
 		$this->dropColumn('ophcioperationdayassessment_dayofoperation_home_on','deleted');
-		$this->dropColumn('ophcioperationdayassessment_dayofoperation_home_on_version','deleted');
 
 		$this->dropColumn('et_ophcioperationdayassessment_anaesthetic','deleted');
-		$this->dropColumn('et_ophcioperationdayassessment_anaesthetic_version','deleted');
 		$this->dropColumn('et_ophcioperationdayassessment_dayofoperation','deleted');
-		$this->dropColumn('et_ophcioperationdayassessment_dayofoperation_version','deleted');
 
 		$this->dropTable('et_ophcioperationdayassessment_anaesthetic_version');
 		$this->dropTable('et_ophcioperationdayassessment_dayofoperation_version');
