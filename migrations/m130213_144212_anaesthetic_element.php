@@ -4,8 +4,8 @@ class m130213_144212_anaesthetic_element extends CDbMigration
 {
 	public function up()
 	{
-		$event_type = EventType::model()->find('class_name=?',array('OphCiOperationdayassessment'));
-		$this->insert('element_type',array('class_name'=>'Element_OphCiOperationdayassessment_Anaesthetic','name'=>'Anaesthetic','event_type_id'=>$event_type->id,'display_order'=>2,'default'=>1));
+		$event_type = $this->dbConnection->createCommand()->select("*")->from("event_type")->where("class_name = :class_name",array(":class_name" => "OphCiOperationdayassessment"))->queryRow();
+		$this->insert('element_type',array('class_name'=>'Element_OphCiOperationdayassessment_Anaesthetic','name'=>'Anaesthetic','event_type_id'=>$event_type['id'],'display_order'=>2,'default'=>1));
 
 		$this->createTable('ophcioperationdayassessment_anaesthetic_anaesthetic', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
@@ -54,7 +54,7 @@ class m130213_144212_anaesthetic_element extends CDbMigration
 		$this->dropTable('et_ophcioperationdayassessment_anaesthetic');
 		$this->dropTable('ophcioperationdayassessment_anaesthetic_anaesthetic');
 
-		$event_type = EventType::model()->find('class_name=?',array('OphCiOperationdayassessment'));
-		$this->delete('element_type','event_type_id='.$event_type->id." and class_name='Element_OphCiOperationdayassessment_Anaesthetic'");
+		$event_type = $this->dbConnection->createCommand()->select("*")->from("event_type")->where("class_name = :class_name",array(":class_name" => "OphCiOperationdayassessment"))->queryRow();
+		$this->delete('element_type','event_type_id='.$event_type['id']." and class_name='Element_OphCiOperationdayassessment_Anaesthetic'");
 	}
 }
