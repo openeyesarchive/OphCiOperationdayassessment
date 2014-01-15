@@ -6,7 +6,7 @@ class m130502_081917_discharged_home_on extends CDbMigration
 	{
 		$this->createTable('ophcioperationdayassessment_dayofoperation_discharged_home_on', array(
 				'id' => 'int(10) unsigned NOT NULL AUTO_INCREMENT',
-				'name' => 'varchar(64) COLLATE utf8_bin NOT NULL',
+				'name' => 'varchar(64) NOT NULL',
 				'display_order' => 'int(10) unsigned NOT NULL',
 				'last_modified_user_id' => 'int(10) unsigned NOT NULL DEFAULT 1',
 				'last_modified_date' => 'datetime NOT NULL DEFAULT \'1901-01-01 00:00:00\'',
@@ -17,7 +17,7 @@ class m130502_081917_discharged_home_on extends CDbMigration
 				'KEY `ophcioperationdayassessment_doo_dho_cui_fk` (`created_user_id`)',
 				'CONSTRAINT `ophcioperationdayassessment_doo_dho_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcioperationdayassessment_doo_dho_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->insert('ophcioperationdayassessment_dayofoperation_discharged_home_on',array('name'=>'G Maxidex for 2 weeks then BD for 2 weeks then stop','display_order'=>1));
 		$this->insert('ophcioperationdayassessment_dayofoperation_discharged_home_on',array('name'=>'G Chloramphenicol QID for 6 days then stop','display_order'=>2));
