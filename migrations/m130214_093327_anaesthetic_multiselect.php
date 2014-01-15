@@ -25,7 +25,7 @@ class m130214_093327_anaesthetic_multiselect extends CDbMigration
 				'CONSTRAINT `ophcioperationdayassessment_anaesthetics_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)',
 				'CONSTRAINT `ophcioperationdayassessment_anaesthetics_ele_fk` FOREIGN KEY (`element_id`) REFERENCES `et_ophcioperationdayassessment_anaesthetic` (`id`)',
 				'CONSTRAINT `ophcioperationdayassessment_anaesthetics_ana_fk` FOREIGN KEY (`anaesthetic_id`) REFERENCES `ophcioperationdayassessment_anaesthetic_anaesthetic` (`id`)',
-			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_bin');
+			), 'ENGINE=InnoDB  DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci');
 
 		$this->renameTable('ophcioperationdayassessment_anaesthetic_anaesthetic','ophcioperationdayassessment_anaesthetic');
 
