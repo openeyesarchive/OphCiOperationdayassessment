@@ -26,7 +26,7 @@ CREATE TABLE `et_ophcioperationdayassessment_anaesthetic_version` (
 	CONSTRAINT `acv_et_ophcioperationdayassessment_ana_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophcioperationdayassessment_ana_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcioperationdayassessment_ana_nurse_id_fk` FOREIGN KEY (`nurse_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcioperationdayassessment_anaesthetic_version','id','int(10) unsigned NOT NULL');
@@ -63,7 +63,7 @@ CREATE TABLE `et_ophcioperationdayassessment_dayofoperation_version` (
 	CONSTRAINT `acv_et_ophcioperationdayassessment_doo_created_user_id_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_et_ophcioperationdayassessment_doo_event_id_fk` FOREIGN KEY (`event_id`) REFERENCES `event` (`id`),
 	CONSTRAINT `acv_et_ophcioperationdayassessment_doo_last_modified_user_id_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('et_ophcioperationdayassessment_dayofoperation_version','id','int(10) unsigned NOT NULL');
@@ -81,7 +81,7 @@ CREATE TABLE `et_ophcioperationdayassessment_dayofoperation_version` (
 		$this->execute("
 CREATE TABLE `ophcioperationdayassessment_anaesthetic_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(128) COLLATE utf8_bin NOT NULL,
+	`name` varchar(128) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -92,7 +92,7 @@ CREATE TABLE `ophcioperationdayassessment_anaesthetic_version` (
 	KEY `acv_ophcioperationdayassessment_anaesthetic_lmui_fk` (`last_modified_user_id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetic_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetic_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophcioperationdayassessment_anaesthetic_version','id','int(10) unsigned NOT NULL');
@@ -125,7 +125,7 @@ CREATE TABLE `ophcioperationdayassessment_anaesthetics_version` (
 	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetics_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetics_ele_fk` FOREIGN KEY (`element_id`) REFERENCES `et_ophcioperationdayassessment_anaesthetic` (`id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetics_ana_fk` FOREIGN KEY (`anaesthetic_id`) REFERENCES `ophcioperationdayassessment_anaesthetic` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophcioperationdayassessment_anaesthetics_version','id','int(10) unsigned NOT NULL');
@@ -143,7 +143,7 @@ CREATE TABLE `ophcioperationdayassessment_anaesthetics_version` (
 		$this->execute("
 CREATE TABLE `ophcioperationdayassessment_dayofoperation_home_on_version` (
 	`id` int(10) unsigned NOT NULL AUTO_INCREMENT,
-	`name` varchar(64) COLLATE utf8_bin NOT NULL,
+	`name` varchar(64) NOT NULL,
 	`display_order` int(10) unsigned NOT NULL,
 	`last_modified_user_id` int(10) unsigned NOT NULL DEFAULT '1',
 	`last_modified_date` datetime NOT NULL DEFAULT '1901-01-01 00:00:00',
@@ -154,7 +154,7 @@ CREATE TABLE `ophcioperationdayassessment_dayofoperation_home_on_version` (
 	KEY `acv_ophcioperationdayassessment_doo_dho_cui_fk` (`created_user_id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_doo_dho_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_doo_dho_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_bin
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
 
 		$this->alterColumn('ophcioperationdayassessment_dayofoperation_home_on_version','id','int(10) unsigned NOT NULL');
