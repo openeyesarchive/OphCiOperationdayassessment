@@ -32,7 +32,7 @@
  * @property User $usermodified
  */
 
-class OphCiOperationdayassessment_Discharged_Home_On extends BaseActiveRecordVersioned
+class OphCiOperationdayassessment_Discharged_Home_On extends BaseActiveRecordVersionedSoftDelete
 {
 	/**
 	 * Returns the static model of the specified AR class.
