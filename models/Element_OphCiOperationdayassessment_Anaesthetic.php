@@ -185,5 +185,16 @@ class Element_OphCiOperationdayassessment_Anaesthetic extends BaseEventTypeEleme
 
 		return parent::afterSave();
 	}
+
+	public function getAnaestheticAgentValues()
+	{
+		$anaesthetic_agent_values = array();
+
+		foreach ($this->anaesthetic_agents as $anaesthetic_agent) {
+			$anaesthetic_agent_values[] = $anaesthetic_agent->anaesthetic_id;
+		}
+
+		return $anaesthetic_agent_values;
+	}
 }
 ?>
