@@ -123,7 +123,6 @@ CREATE TABLE `ophcioperationdayassessment_anaesthetics_version` (
 	KEY `acv_ophcioperationdayassessment_anaesthetics_ana_fk` (`anaesthetic_id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetics_lmui_fk` FOREIGN KEY (`last_modified_user_id`) REFERENCES `user` (`id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetics_cui_fk` FOREIGN KEY (`created_user_id`) REFERENCES `user` (`id`),
-	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetics_ele_fk` FOREIGN KEY (`element_id`) REFERENCES `et_ophcioperationdayassessment_anaesthetic` (`id`),
 	CONSTRAINT `acv_ophcioperationdayassessment_anaesthetics_ana_fk` FOREIGN KEY (`anaesthetic_id`) REFERENCES `ophcioperationdayassessment_anaesthetic` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci
 		");
